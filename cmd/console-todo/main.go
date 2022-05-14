@@ -6,7 +6,7 @@ import (
 	"golang-todo-app/storage"
 )
 
-func WriteTodo(storage storage.Storage, todo string) {
+func WriteTodo(storage storage.DB, todo string) {
 	storage.Create(todo)
 }
 

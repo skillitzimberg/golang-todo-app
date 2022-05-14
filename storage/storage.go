@@ -1,5 +1,5 @@
 package storage
 
-type Storage interface {
+type DB interface {
 	Create(string)
 }
