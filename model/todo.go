@@ -1,10 +1,10 @@
 package model
 
 type Todo struct {
-	desc string
+	Desc string
 }
 
 func NewTodo(desc string) (todo Todo) {
-	todo.desc = desc
+	todo.Desc = desc
 	return
 }

@@ -1,3 +1,3 @@
-module github.com/skillitzimberg/golang-todo-app
+module golang-todo-app
 
 go 1.17
