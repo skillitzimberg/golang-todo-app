@@ -5,11 +5,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/skillitzimberg/golang-todo-app/model/todo"
+	"golang-todo-app/model"
 )
 
 type Storage interface {
-	Create(Todo)
+	Create(model.Todo)
 }
 
 type FileDB struct {
@@ -21,16 +21,16 @@ func NewFileDB(source string) (fdb FileDB) {
 	return
 }
 
-func (db FileDB) Create(todo Todo) {
+func (db FileDB) Create(todo model.Todo) {
 	f, err := os.OpenFile(db.source, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0664)
 	if err != nil {
 		log.Fatalf("Error creating file: %s", err)
 	}
 
-	f.Write([]byte(fmt.Sprintf("%s\n", todo.desc)))
+	f.Write([]byte(fmt.Sprintf("%s\n", todo.Desc)))
 }
 
-func WriteTodo(storage Storage, todo Todo) {
+func WriteTodo(storage Storage, todo model.Todo) {
 	storage.Create(todo)
 }
 
@@ -39,6 +39,6 @@ func main() {
 
 	fdb := NewFileDB("todos.txt")
 	for _, newTodo := range newTodos {
-		WriteTodo(fdb, NewTodo(newTodo))
+		WriteTodo(fdb, model.NewTodo(newTodo))
 	}
 }
